@@ -1,0 +1,20 @@
+{
+  "name": "automation-scripts",
+  "version": "1.0.0",
+  "description": "Scripts de automatización para testing y deployment",
+  "scripts": {
+    "setup": "bash setup.sh",
+    "setup:windows": "powershell -ExecutionPolicy Bypass -File setup.ps1",
+    "deploy": "bash test-and-deploy.sh",
+    "deploy:windows": "powershell -ExecutionPolicy Bypass -File test-and-deploy.ps1",
+    "deploy:auto": "bash test-and-deploy.sh --auto",
+    "deploy:auto:windows": "powershell -ExecutionPolicy Bypass -File test-and-deploy.ps1 -Auto",
+    "quick": "bash quick-deploy.sh",
+    "quick:windows": "powershell -ExecutionPolicy Bypass -File quick-deploy.ps1",
+    "quick:auto": "bash quick-deploy.sh --auto",
+    "quick:auto:windows": "powershell -ExecutionPolicy Bypass -File quick-deploy.ps1 -Auto"
+  },
+  "keywords": ["automation", "ci/cd", "testing", "deployment"],
+  "author": "Tu Nombre",
+  "license": "MIT"
+}

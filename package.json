@@ -17,7 +17,17 @@
     "build:production": "vite build --mode production",
     "docker:build": "docker build -t frontend-admin .",
     "docker:run": "docker run -p 8080:8080 frontend-admin",
-    "gcloud:deploy": "gcloud run deploy frontend-admin --source . --region=us-central1 --allow-unauthenticated"
+    "gcloud:deploy": "gcloud run deploy frontend-admin --source . --region=us-central1 --allow-unauthenticated",
+    "setup": "bash scripts/setup.sh",
+    "setup:windows": "powershell -ExecutionPolicy Bypass -File scripts/setup.ps1",
+    "deploy": "bash scripts/test-and-deploy.sh",
+    "deploy:windows": "powershell -ExecutionPolicy Bypass -File scripts/test-and-deploy.ps1",
+    "deploy:auto": "bash scripts/test-and-deploy.sh --auto",
+    "deploy:auto:windows": "powershell -ExecutionPolicy Bypass -File scripts/test-and-deploy.ps1 -Auto",
+    "quick": "bash scripts/quick-deploy.sh",
+    "quick:windows": "powershell -ExecutionPolicy Bypass -File scripts/quick-deploy.ps1",
+    "quick:auto": "bash scripts/quick-deploy.sh --auto",
+    "quick:auto:windows": "powershell -ExecutionPolicy Bypass -File scripts/quick-deploy.ps1 -Auto"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.17",
