@@ -1,0 +1,48 @@
+{
+  "name": "gestion-academica-admin",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Panel Administrativo para Gestión Académica",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint src --ext js,jsx,ts,tsx",
+    "lint:fix": "eslint src --ext js,jsx,ts,tsx --fix",
+    "build:production": "vite build --mode production",
+    "docker:build": "docker build -t frontend-admin .",
+    "docker:run": "docker run -p 8080:8080 frontend-admin",
+    "gcloud:deploy": "gcloud run deploy frontend-admin --source . --region=us-central1 --allow-unauthenticated"
+  },
+  "dependencies": {
+    "@headlessui/react": "^1.7.17",
+    "@heroicons/react": "^2.0.18",
+    "@tanstack/react-query": "^5.17.0",
+    "axios": "^1.6.5",
+    "clsx": "^2.1.0",
+    "date-fns": "^3.2.0",
+    "framer-motion": "^10.18.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.48.2",
+    "react-router-dom": "^6.21.1",
+    "react-toastify": "^10.0.4",
+    "recharts": "^2.10.1",
+    "tailwindcss": "^3.4.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.48",
+    "@types/react-dom": "^18.2.18",
+    "@typescript-eslint/eslint-plugin": "^6.18.1",
+    "@typescript-eslint/parser": "^6.18.1",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.56.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "postcss": "^8.4.33",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.11"
+  }
+}
