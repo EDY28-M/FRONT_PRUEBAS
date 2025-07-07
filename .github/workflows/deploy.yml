@@ -44,20 +44,20 @@ jobs:
     - name: Setup Google Cloud CLI
       uses: google-github-actions/setup-gcloud@v2
       with:
-        project_id: ${{ secrets.GCP_PROJECT_ID }}
+        project_id: ascendant-altar-457900-v4
     
     - name: Configure Docker to use gcloud as a credential helper
       run: gcloud auth configure-docker
     
     - name: Build and push Docker image
       run: |
-        docker build -t gcr.io/${{ secrets.GCP_PROJECT_ID }}/frontend-admin:${{ github.sha }} .
-        docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/frontend-admin:${{ github.sha }}
+        docker build -t gcr.io/ascendant-altar-457900-v4/frontend-admin:${{ github.sha }} .
+        docker push gcr.io/ascendant-altar-457900-v4/frontend-admin:${{ github.sha }}
     
     - name: Deploy to Cloud Run
       run: |
         gcloud run deploy front-git \
-          --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/frontend-admin:${{ github.sha }} \
+          --image gcr.io/ascendant-altar-457900-v4/frontend-admin:${{ github.sha }} \
           --platform managed \
           --region europe-west1 \
           --allow-unauthenticated \
