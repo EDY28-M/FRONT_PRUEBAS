@@ -1,9 +1,9 @@
+/* Importar estilos de layout primero */
+@import './styles/layout.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Importar estilos de layout */
-@import './styles/layout.css';
 
 @layer base {
   html {

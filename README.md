@@ -2,6 +2,14 @@
 
 Un panel administrativo moderno y minimalista para la gestión de docentes y cursos académicos, desarrollado con React, TypeScript y Tailwind CSS.
 
+[![Deploy to Cloud Run](https://github.com/usuario/frontend-admin/actions/workflows/deploy.yml/badge.svg)](https://github.com/usuario/frontend-admin/actions/workflows/deploy.yml)
+[![PR Review](https://github.com/usuario/frontend-admin/actions/workflows/pr-review.yml/badge.svg)](https://github.com/usuario/frontend-admin/actions/workflows/pr-review.yml)
+
+## 🌐 Live Demo
+
+- **Producción**: [https://frontend-admin-XXXXXXXX-uc.a.run.app](https://frontend-admin-XXXXXXXX-uc.a.run.app)
+- **Swagger API**: [https://34.60.233.211/swagger](https://34.60.233.211/swagger)
+
 ## 🚀 Características
 
 ### 📊 Dashboard Interactivo
@@ -72,6 +80,236 @@ Danger: #EF4444 (Rojo)
 - Node.js 18+ 
 - npm 9+ 
 - Backend API ejecutándose en `https://localhost:7219`
+
+### ⚡ Inicio Rápido con Scripts Automáticos
+
+La forma más fácil de levantar todo el sistema es usando los scripts automáticos ubicados en la carpeta raíz:
+
+#### 🎯 Opción 1: Menu Interactivo
+```bash
+# Desde la carpeta raíz del proyecto:
+menu.bat
+```
+
+#### 🚀 Opción 2: Scripts Directos
+```bash
+# Inicio normal (recomendado)
+start-system.bat
+
+# Inicio rápido con navegador automático
+quick-start.bat
+
+# Modo desarrollo con hot reload
+dev-mode.bat
+
+# Verificar sistema antes de empezar
+check-system.bat
+
+# Detener todos los servicios
+stop-system.bat
+```
+
+#### 💻 PowerShell (Alternativo)
+```powershell
+# Para usuarios de PowerShell
+.\start-system.ps1
+```
+
+### 🔧 Instalación Manual
+
+1. **Instalar dependencias**
+```bash
+cd FRONTEND_ADMIN
+npm install
+```
+
+2. **Configurar variables de entorno**
+```bash
+# Crear archivo .env.local
+VITE_API_URL=https://localhost:7219/api
+```
+
+3. **Ejecutar backend**
+```bash
+cd BACKEND_DEVELOMENT/API_REST_CURSOSACADEMICOS
+dotnet run
+```
+
+4. **Ejecutar frontend**
+```bash
+cd FRONTEND_ADMIN
+npm run dev
+```
+
+5. **Compilar para producción**
+```bash
+npm run build
+```
+
+## 📁 Estructura del Proyecto
+
+```
+FRONTEND_ADMIN/
+├── src/
+│   ├── components/          # Componentes reutilizables
+│   │   ├── Layout/         # Layout principal y navegación
+│   │   ├── Dashboard/      # Componentes del dashboard
+│   │   ├── Docentes/      # Componentes de gestión de docentes
+│   │   ├── Cursos/        # Componentes de gestión de cursos
+│   │   └── Common/        # Componentes compartidos
+│   ├── pages/              # Páginas principales
+│   │   ├── Dashboard.tsx   # Página de inicio
+│   │   ├── Docentes/      # Páginas de docentes
+│   │   ├── Cursos/        # Páginas de cursos
+│   │   └── Estadisticas/  # Páginas de reportes
+│   ├── services/           # Servicios API
+│   ├── types/              # Tipos TypeScript
+│   ├── lib/                # Utilidades y configuraciones
+│   └── styles/             # Estilos globales
+├── public/                 # Archivos estáticos
+└── package.json           # Dependencias y scripts
+```
+
+## 🔧 Configuración del Backend
+
+El frontend está configurado para comunicarse con el backend .NET en:
+- **URL base**: `https://localhost:7219/api`
+- **Endpoints**:
+  - `GET /api/docentes` - Obtener todos los docentes
+  - `POST /api/docentes` - Crear nuevo docente
+  - `PUT /api/docentes/{id}` - Actualizar docente
+  - `DELETE /api/docentes/{id}` - Eliminar docente
+  - `GET /api/cursos` - Obtener todos los cursos
+  - `POST /api/cursos` - Crear nuevo curso
+  - `PUT /api/cursos/{id}` - Actualizar curso
+  - `DELETE /api/cursos/{id}` - Eliminar curso
+
+## 📱 Características Responsive
+
+- **Mobile First** - Diseño optimizado para móviles
+- **Breakpoints**:
+  - `sm`: 640px
+  - `md`: 768px
+  - `lg`: 1024px
+  - `xl`: 1280px
+- **Sidebar colapsable** en dispositivos móviles
+- **Tablas scrolleables** horizontalmente
+- **Navegación adaptativa**
+
+## 🎯 Funcionalidades Clave
+
+### Dashboard
+- Tarjetas de métricas con animaciones
+- Gráficos interactivos en tiempo real
+- Acciones rápidas para crear contenido
+- Actividad reciente del sistema
+
+### Gestión de Docentes
+- Lista con búsqueda y filtros
+- Formulario modal para CRUD
+- Validación de datos en tiempo real
+- Vista detallada con cursos asignados
+
+### Gestión de Cursos
+- Filtros por ciclo académico
+- Asignación automática de docentes
+- Gestión de créditos y horas
+- Validación de rangos numéricos
+
+### Estadísticas
+- Múltiples tipos de gráficos
+- Análisis por ciclos académicos
+- Distribución de recursos
+- Exportación de datos
+
+## 🔐 Seguridad
+
+- **Validación de formularios** en cliente y servidor
+- **Sanitización de datos** antes del envío
+- **Manejo de errores** robusto
+- **Timeout de peticiones** configurado
+
+## 🚀 Rendimiento
+
+- **Lazy loading** de componentes
+- **Memoización** de componentes pesados
+- **Optimización de imágenes**
+- **Bundling eficiente** con Vite
+
+## 📊 Monitoreo
+
+- **Logging** de errores HTTP
+- **Métricas de rendimiento**
+- **Feedback visual** de estados de carga
+- **Notificaciones** toast para acciones
+
+## 🤝 Contribución
+
+1. Fork el proyecto
+2. Crear una rama para tu feature (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abrir un Pull Request
+
+## 📄 Licencia
+
+Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
+
+## 👥 Equipo
+
+- **Desarrollador Frontend**: Panel administrativo con React/TypeScript
+- **Integración Backend**: API REST con .NET Core
+- **Diseño UI/UX**: Interfaz moderna y minimalista
+
+## 📞 Soporte
+
+Para soporte técnico o preguntas:
+- **Email**: admin@sistema.com
+- **Documentación**: Ver archivos de documentación en `/docs`
+- **Issues**: Reportar problemas en GitHub Issues
+
+---
+
+*Desarrollado con ❤️ para mejorar la gestión académica*
+
+## 🐳 Despliegue con Docker y Cloud Run
+
+### Prerequisitos para Despliegue
+- Node.js 18+
+- npm 9+
+- Docker Desktop
+- Google Cloud CLI (gcloud)
+- Cuenta de Google Cloud Platform
+
+### ⚡ Despliegue Automático con GitHub Actions
+
+Este proyecto incluye CI/CD automático con GitHub Actions que despliega a Google Cloud Run:
+
+1. **Fork** este repositorio
+2. **Configura los secrets** en GitHub (ver `DEPLOYMENT_GUIDE.md`)
+3. **Push** a la rama `main` para desplegar automáticamente
+
+### 🚀 Despliegue Manual
+
+#### Windows PowerShell:
+```powershell
+.\deploy.ps1 -ProjectId "tu-project-id"
+```
+
+#### Linux/macOS:
+```bash
+chmod +x deploy.sh
+./deploy.sh tu-project-id
+```
+
+#### Docker Local:
+```bash
+# Build
+npm run docker:build
+
+# Run
+npm run docker:run
+```
 
 ### ⚡ Inicio Rápido con Scripts Automáticos
 
