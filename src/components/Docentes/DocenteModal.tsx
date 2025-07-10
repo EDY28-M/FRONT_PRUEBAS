@@ -1,4 +1,4 @@
-import { Fragment, useEffect } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import { useForm } from 'react-hook-form'
@@ -25,12 +25,16 @@ const DocenteModal: React.FC<DocenteModalProps> = ({
   const isEditMode = mode === 'edit'
   const isCreateMode = mode === 'create'
 
+  // Estado para error de correo duplicado
+  const [correoError, setCorreoError] = useState<string | null>(null)
+
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
     setValue,
+    setError, // <-- para setear error manualmente
   } = useForm<DocenteCreate | DocenteUpdate>()
 
   useEffect(() => {
@@ -43,6 +47,7 @@ const DocenteModal: React.FC<DocenteModalProps> = ({
     } else if (isOpen && isCreateMode) {
       reset()
     }
+    setCorreoError(null) // Limpiar error al abrir modal
   }, [isOpen, docente, mode, setValue, reset, isEditMode, isViewMode, isCreateMode])
 
   const createMutation = useMutation({
@@ -52,8 +57,19 @@ const DocenteModal: React.FC<DocenteModalProps> = ({
       toast.success('Docente creado exitosamente')
       onClose()
     },
-    onError: (error) => {
-      toast.error('Error al crear docente')
+    onError: (error: any) => {
+      // Intentar extraer mensaje del backend
+      const backendMsg = error?.response?.data || error?.message
+      if (
+        backendMsg &&
+        typeof backendMsg === 'string' &&
+        backendMsg.toLowerCase().includes('correo')
+      ) {
+        setCorreoError(backendMsg)
+        setError('correo', { type: 'manual', message: backendMsg })
+      } else {
+        toast.error('Error al crear docente')
+      }
       console.error('Error:', error)
     },
   })
@@ -172,14 +188,17 @@ const DocenteModal: React.FC<DocenteModalProps> = ({
                           {...register('correo', {
                             pattern: {
                               value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                              message: 'Ingrese un correo válido'
-                            }
+                              message: 'Ingrese un correo válido',
+                            },
                           })}
                           className="input"
                           disabled={isViewMode}
                         />
                         {errors.correo && (
                           <p className="mt-1 text-sm text-red-600">{errors.correo.message}</p>
+                        )}
+                        {correoError && !errors.correo && (
+                          <p className="mt-1 text-sm text-red-600">{correoError}</p>
                         )}
                       </div>
 
